@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[455],{9455:(n,t,e)=>{e.r(t),e.d(t,{default:()=>s});const c={props:{},data:function(){return{}},computed:{},methods:{},components:{}};const s=(0,e(1900).Z)(c,(function(){return(0,this._self._c)("v-container")}),[],!1,null,"28cc5f52",null).exports}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[883],{6883:(t,s,n)=>{n.r(s),n.d(s,{default:()=>e});const u={props:["auth"]};const e=(0,n(1900).Z)(u,(function(){return(0,this._self._c)("v-container",{attrs:{fluid:""}},[this._v("\n  Auth Dashboard\n")])}),[],!1,null,"66519288",null).exports}}]);
