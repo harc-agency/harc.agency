@@ -46,6 +46,11 @@ Route::put('/user/profile-information', [\App\Http\Controllers\ProfileInformatio
 
 //Home
 Route::get('/',  function(){
+    // index
+    // return the default index page not inertia
+    return view('welcome');
+
+
     // if site settings
     //    if(Setting::config()->get('site.default_route') !== '') {
     //         return redirect(Setting::config()->get('site.default_route'));
