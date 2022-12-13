@@ -21,7 +21,6 @@ echo " "
 if [ "$env" == 'production' ]; then
   echo "$env $production_path"
   service apache2 stop #digital ocean try to run apache2 on startup
-
 else
   echo "$env $(pwd)"
 fi
@@ -76,8 +75,7 @@ if [ "$env" == 'production' ]; then
       laravel-horizon
   fi
 else
-  #  LOCAL
-
+  
   if [ ${1:-1} == 'build' ]; then
     cd laradock || exit
     docker-compose build \

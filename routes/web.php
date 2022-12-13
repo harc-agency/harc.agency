@@ -48,7 +48,6 @@ Route::put('/user/profile-information', [\App\Http\Controllers\ProfileInformatio
 Route::get('/',  function(){
     return view('welcome');
 
-
     // if site settings
     //    if(Setting::config()->get('site.default_route') !== '') {
     //         return redirect(Setting::config()->get('site.default_route'));
@@ -73,3 +72,12 @@ Route::resource('/user-settings', 'UserSettingsController');
 
 //Pages
 Route::get('/{link}',  [PageController::class, 'page'])->name('page');
+
+
+//Slack Commands
+// group all slack commands under /slack
+Route::prefix('/slack')->group(function () {
+
+    // https://harc.agency/slack/meet
+    Route::post('/meet', [\App\Http\Controllers\SlackController::class, 'meet']);
+});
