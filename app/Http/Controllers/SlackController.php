@@ -50,8 +50,10 @@ class SlackController extends Controller
                 ],
             ],
         ];
+        
 
-        return response()->json($response);
+        // return the link
+        return $link;
        
     }
 }
