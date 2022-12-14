@@ -14,7 +14,7 @@ class SlackController extends Controller
             die();
         }
 
-        
+
 
 
         // if the argument is set, use it, otherwise use 'office'
@@ -29,9 +29,7 @@ class SlackController extends Controller
         // create the link
         $link = 'https://meet.harc.agency/' . $text;
 
-         
-
-        //create blocks
+        //Block Kit Builder
         $blocks = [
             "blocks" => [
                 [
@@ -59,14 +57,15 @@ class SlackController extends Controller
             ]
         ];
 
-        
 
-        $response = json_encode($blocks);
-        
-        
+        // in order for slack to understand the response, we need to return it as JSON
+        header('Content-Type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Content-Type, Accept, Authorization, X-Requested-With, Application');
 
-        // return the link
-        return $link;
-       
+        
+        //also return the link
+        return json_encode($blocks);
     }
 }
