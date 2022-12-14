@@ -41,7 +41,36 @@ class SlackController extends Controller
         $text = strtolower($text);
 
         // create the link
-        echo 'https://meet.harc.agency/' . $text;
+        $link = 'https://meet.harc.agency/' . $text;
+
+        // header should be json
+        header('Content-Type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+
+        // create a block kit response
+        $response = [
+            'response_type' => 'in_channel',
+            'blocks' => [
+                [
+                    'type' => 'section',
+                    'text' => [
+                        'type' => 'mrkdwn',
+                        'text' => 'Click the link below to join the meeting room',
+                    ],
+                ],
+                [
+                    'type' => 'section',
+                    'text' => [
+                        'type' => 'mrkdwn',
+                        'text' => '<' . $link . '|' . $link . '>',
+                    ],
+                ],
+            ],
+        ];
+
+        // return the response
+        echo json_encode($response);
 
     }
 
