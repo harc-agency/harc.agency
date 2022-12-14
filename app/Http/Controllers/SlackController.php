@@ -81,8 +81,16 @@ class SlackController extends Controller
         ];
         //set the header to json
         header('Content-Type: application/json');
+        http_response_code(200);
+
 
         // in order for slack to understand the response, we need to return it as JSON
         return json_encode($blocks);
+    }
+
+    //challenge
+    public function challenge(Request $request)
+    {
+        echo $request->challenge;
     }
 }
