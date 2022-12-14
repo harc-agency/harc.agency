@@ -33,27 +33,33 @@ class SlackController extends Controller
 
         //create blocks
         $blocks = [
-            [
-                "type" => "section",
-                "text" => [
-                    "type" => "mrkdwn",
-                    "text" => "Click the button below to join the meeting room",
+            "blocks" => [
+                [
+                    "type" => "section",
+                    "text" => [
+                        "type" => "mrkdwn",
+                        "text" => "Click the button below to join the meeting room: " . $text
+                    ]
                 ],
-            ],
-            [
-                "type" => "actions",
-                "elements" => [
-                    [
-                        "type" => "button",
-                        "text" => [
-                            "type" => "plain_text",
-                            "text" => "Join Meeting",
-                        ],
-                        "url" => $link,
-                    ],
-                ],
-            ],
+                [
+                    "type" => "actions",
+                    "elements" => [
+                        [
+                            "type" => "button",
+                            "text" => [
+                                "type" => "plain_text",
+                                "text" => "Join Meeting",
+                                "emoji" => true
+                            ],
+                            "value" => "click_me_123",
+                            "url" => $link
+                        ]
+                    ]
+                ]
+            ]
         ];
+
+        
 
         $response = json_encode($blocks);
         
