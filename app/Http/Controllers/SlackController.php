@@ -9,12 +9,19 @@ class SlackController extends Controller
     // meet
     public function meet(Request $request)
     {
+
+        // if hep is requested, show help
         if ($request->text == 'help') {
-            echo '/meet [room name] - creates a link to a meeting room';
+            echo '/meet [room name (default: office)] - creates a link to a meeting room';
             die();
         }
 
-
+        //if random is requested, show random
+        if ($request->text == 'random') {
+            $text = \Illuminate\Support\Str::random(8);
+            echo 'https://meet.harc.agency/' . $text;
+            die();
+        }
 
 
         // if the argument is set, use it, otherwise use 'office'
@@ -29,7 +36,13 @@ class SlackController extends Controller
         // create the link
         $link = 'https://meet.harc.agency/' . $text;
 
-        //Block Kit Builder
+
+        //Reference: Message Payload
+        // https://api.slack.com/reference/messaging/payload
+
+        // what is needed to create a message?
+        // In Order to create a message, we need to create a block kit
+
         $blocks = [
             "blocks" => [
                 [
@@ -57,15 +70,38 @@ class SlackController extends Controller
             ]
         ];
 
-
         // in order for slack to understand the response, we need to return it as JSON
-        header('Content-Type: application/json');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
-        header('Access-Control-Allow-Headers: Content-Type, Accept, Authorization, X-Requested-With, Application');
-
+        return response()->json($blocks);
         
-        //also return the link
-        return json_encode($blocks);
+
+        //output: https://meet.harc.agency/office
+        /*
+        {
+            "blocks": [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "Click the button below to join the meeting room: office"
+                    }
+                },
+                {
+                    "type": "actions",
+                    "elements": [
+                        {
+                            "type": "button",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Join Meeting",
+                                "emoji": true
+                            },
+                            "value": "click_me_123",
+                            "url": "https://meet.harc.agency/office"
+                        }
+                    ]
+                }
+            ]
+        }
+        */
     }
 }
