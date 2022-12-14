@@ -32,7 +32,7 @@ class SlackController extends Controller
 
 
         // if the argument is set, use it, otherwise use 'office'
-        $text = isset($request->text) ? $request->text : 'office';
+        $text = $request->text ?? 'office';
 
         // remove spaces from the argument
         $text = str_replace(' ', '', $text);
@@ -44,45 +44,12 @@ class SlackController extends Controller
         $link = 'https://meet.harc.agency/' . $text;
 
 
-        //Reference: Message Payload
-        // https://api.slack.com/reference/messaging/payload
+        
 
-        // what is needed to create a message?
-        // In Order to create a message, we need to create a block kit
+        
+        
 
-        $blocks = [
-            "blocks" => [
-                [
-                    "type" => "section",
-                    "text" => [
-                        "type" => "mrkdwn",
-                        "text" => "Click the button below to join the meeting room: " . $text
-                    ]
-                ],
-                [
-                    "type" => "actions",
-                    "elements" => [
-                        [
-                            "type" => "button",
-                            "text" => [
-                                "type" => "plain_text",
-                                "text" => "Join Meeting",
-                                "emoji" => true
-                            ],
-                            "value" => "click_me_123",
-                            "url" => $link
-                        ]
-                    ]
-                ]
-            ]
-        ];
-        //set the header to json
-        header('Content-Type: application/json');
-        http_response_code(200);
-
-
-        // in order for slack to understand the response, we need to return it as JSON
-        return json_encode($blocks);
+        return $link;
     }
 
     //challenge
