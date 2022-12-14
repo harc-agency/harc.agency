@@ -23,6 +23,12 @@ class SlackController extends Controller
             die();
         }
 
+        //if post is requested, show data
+        if ($request->text == 'post') {
+            json_encode($request->all());
+            die();
+        }
+
 
         // if the argument is set, use it, otherwise use 'office'
         $text = isset($request->text) ? $request->text : 'office';
