@@ -7,72 +7,17 @@ use Illuminate\Http\Request;
 
 class SlackController extends Controller
 {
-    // slack/meet
-    public function meet(Request $request)
+    //slack/events
+    public function events(Request $request)
     {
-
-        // if help is requested, show help
-        if ($request->text == 'help') {
-            echo '/meet [room name (default: office)] - creates a link to a meeting room';
-            die();
+        // first, check the token
+        if ($request->token != 'xoxb-3439711113253-4514126187474-Fw5F1wUGABOBI2SMSEIUs0wP') {
+            return response('Invalid token', 403);
         }
 
-        //if random is requested, show random
-        if ($request->text == 'random') {
-            $text = Str::random(8);
-            echo 'https://meet.harc.agency/' . $text;
-            die();
-        }
+        return response('OK', 200);
 
-        //if post is requested, show data
-        if ($request->text == 'post') {
-            json_encode($request->all());
-            die();
-        }
-
-
-        // if the argument is set, use it, otherwise use 'office'
-        $text = $request->text ?? 'office';
-
-        // remove spaces from the argument
-        $text = str_replace(' ', '', $text);
-
-        // convert the argument to lowercase
-        $text = strtolower($text);
-
-        // create the link
-        $link = 'https://meet.harc.agency/' . $text;
-
-        // create a block kit response
-        $response = [
-            'response_type' => 'in_channel',
-            'blocks' => [
-                [
-                    'type' => 'section',
-                    'text' => [
-                        'type' => 'mrkdwn',
-                        'text' => 'Click the link below to join the meeting room',
-                    ],
-                ],
-                [
-                    'type' => 'section',
-                    'text' => [
-                        'type' => 'mrkdwn',
-                        'text' => '<' . $link . '|' . $link . '>',
-                    ],
-                ],
-            ],
-        ];
-
-        // return the response
-        header('Content-Type: application/json');
-        return response()->json($response);
-
+        
     }
 
-    //challenge
-    public function challenge(Request $request)
-    {
-        echo $request->challenge;
-    }
 }
