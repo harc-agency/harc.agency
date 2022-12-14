@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class SlackController extends Controller
 {
-    // meet
-    public function meet(Request $request)
+    // slack/events
+    public function events(Request $request)
     {
+
+ 
+
 
         // if hep is requested, show help
         if ($request->text == 'help') {
@@ -78,37 +81,6 @@ class SlackController extends Controller
         ];
 
         // in order for slack to understand the response, we need to return it as JSON
-        return response()->json($blocks);
-
-
-        //output: https://meet.harc.agency/office
-        /*
-        {
-            "blocks": [
-                {
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": "Click the button below to join the meeting room: office"
-                    }
-                },
-                {
-                    "type": "actions",
-                    "elements": [
-                        {
-                            "type": "button",
-                            "text": {
-                                "type": "plain_text",
-                                "text": "Join Meeting",
-                                "emoji": true
-                            },
-                            "value": "click_me_123",
-                            "url": "https://meet.harc.agency/office"
-                        }
-                    ]
-                }
-            ]
-        }
-        */
+        return json_encode($blocks);
     }
 }
