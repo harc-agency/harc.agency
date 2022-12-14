@@ -29,27 +29,34 @@ class SlackController extends Controller
         // create the link
         $link = 'https://meet.harc.agency/' . $text;
 
-        // create a slack dialog box with a button
-        $response = [
-            'response_type' => 'in_channel',
-            'attachments' => [
-                [
-                    'text' => 'Click the button to join the meeting',
-                    'fallback' => 'You are unable to join the meeting',
-                    'callback_id' => 'join_meeting',
-                    'color' => '#3AA3E3',
-                    'attachment_type' => 'default',
-                    'actions' => [
-                        [
-                            'name' => 'join',
-                            'text' => 'Join Meeting',
-                            'type' => 'button',
-                            'url' => $link,
+         
+
+        //create blocks
+        $blocks = [
+            [
+                "type" => "section",
+                "text" => [
+                    "type" => "mrkdwn",
+                    "text" => "Click the button below to join the meeting room",
+                ],
+            ],
+            [
+                "type" => "actions",
+                "elements" => [
+                    [
+                        "type" => "button",
+                        "text" => [
+                            "type" => "plain_text",
+                            "text" => "Join Meeting",
                         ],
+                        "url" => $link,
                     ],
                 ],
             ],
         ];
+
+        $response = json_encode($blocks);
+        
         
 
         // return the link
