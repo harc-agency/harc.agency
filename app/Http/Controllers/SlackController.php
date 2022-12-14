@@ -7,14 +7,11 @@ use Illuminate\Http\Request;
 
 class SlackController extends Controller
 {
-    // slack/events
-    public function events(Request $request)
+    // slack/meet
+    public function meet(Request $request)
     {
 
- 
-
-
-        // if hep is requested, show help
+        // if help is requested, show help
         if ($request->text == 'help') {
             echo '/meet [room name (default: office)] - creates a link to a meeting room';
             die();
