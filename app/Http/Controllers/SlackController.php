@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class SlackController extends Controller
@@ -18,7 +19,7 @@ class SlackController extends Controller
 
         //if random is requested, show random
         if ($request->text == 'random') {
-            $text = \Illuminate\Support\Str::random(8);
+            $text = Str::random(8);
             echo 'https://meet.harc.agency/' . $text;
             die();
         }
@@ -78,7 +79,7 @@ class SlackController extends Controller
 
         // in order for slack to understand the response, we need to return it as JSON
         return response()->json($blocks);
-        
+
 
         //output: https://meet.harc.agency/office
         /*
