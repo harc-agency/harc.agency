@@ -84,6 +84,6 @@ Route::prefix('/slack')->group(function () {
     Route::post('/challenge', [\App\Http\Controllers\SlackController::class, 'challenge']);
     
     // https://harc.agency/slack/meet
-    Route::post('/meet', [\App\Http\Controllers\SlackController::class, 'meet']);
+    Route::any('/meet', [\App\Http\Controllers\SlackController::class, 'meet']);
     
 });
