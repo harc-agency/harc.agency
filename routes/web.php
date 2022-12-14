@@ -77,10 +77,7 @@ Route::get('/{link}',  [PageController::class, 'page'])->name('page');
 //Slack Commands
 // group all slack commands under /slack
 Route::prefix('/slack')->group(function () {
-
-    // https://harc.agency/slack/challenge
-    Route::post('/challenge', [\App\Http\Controllers\SlackController::class, 'challenge']);
-    
+ 
     // https://harc.agency/slack/meet
     Route::any('/meet', [\App\Http\Controllers\SlackController::class, 'meet']);
     

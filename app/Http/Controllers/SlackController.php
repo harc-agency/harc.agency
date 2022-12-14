@@ -41,15 +41,8 @@ class SlackController extends Controller
         $text = strtolower($text);
 
         // create the link
-        $link = 'https://meet.harc.agency/' . $text;
+        echo 'https://meet.harc.agency/' . $text;
 
-
-        
-
-        
-        
-
-        return $link;
     }
 
     //challenge
