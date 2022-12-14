@@ -43,11 +43,6 @@ class SlackController extends Controller
         // create the link
         $link = 'https://meet.harc.agency/' . $text;
 
-        // header should be json
-        header('Content-Type: application/json');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
-
         // create a block kit response
         $response = [
             'response_type' => 'in_channel',
@@ -70,7 +65,8 @@ class SlackController extends Controller
         ];
 
         // return the response
-        echo json_encode($response);
+        header('Content-Type: application/json');
+        return response()->json($response);
 
     }
 
