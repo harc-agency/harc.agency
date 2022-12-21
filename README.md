@@ -15,9 +15,9 @@
 ---
 
 
-# HARC website
+# HARC Agency website
 
-#### By <img src="./_assets/HARC/HARC-logo-transparent.png" alt="HARC Logo" width="3%" >
+#### By <img src="./_assets/HARC/HARC-logo-transparent.png" alt="HARC Logo" width="5%" >
 
 
 
