@@ -70,14 +70,46 @@ Route::get('/profile', function (){
 //UserSettings
 Route::resource('/user-settings', 'UserSettingsController');
 
-//Pages
-Route::get('/{link}',  [PageController::class, 'page'])->name('page');
+// Stork Project
+Route::prefix('/stork')->group(function () {
+    // welcome page
+    Route::get('/', function () {
+        // Stork/Welcome is located in resources/js/Pages/Stork/Welcome.vue
+        return Inertia::render('Stork/index', []);
+    })->name('stork.welcome');
+
+    
+
+
+    Route::prefix('/module-1')->group(function () {
+
+        Route::get('/', function () {
+            return Inertia::render('Stork/modules/module-1', []);
+        })->name('stork.modules.module-1');
+
+        Route::get('/project-1', function () {
+            return Inertia::render('Stork/modules/module-1/projects/project1.vue', []);
+        })->name('stork.modules.module-1.project-1');
+    });
+
+    // http://hark.agency/stork/modules/module-2
+    Route::get('/module-2', function () {
+        return Inertia::render('Stork/modules/module-2', []);
+    })->name('stork.modules.module-2');
+
+
+     
+});
+
 
 
 //Slack Commands
 // group all slack commands under /slack
 Route::prefix('/slack')->group(function () {
-    // https://harc.agency/slack/events
     Route::any('/meet', [\App\Http\Controllers\SlackController::class, 'meet']);
- 
 });
+
+
+// Nothing below this line
+//Pages
+Route::get('/{link}',  [PageController::class, 'page'])->name('page');
