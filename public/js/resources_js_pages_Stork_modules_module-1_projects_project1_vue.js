@@ -409,8 +409,7 @@ var render = function render() {
     }
   }, [_c("h1", [_vm._v("Project 1")]), _vm._v(" "), _c("v-row", [_c("v-col", {
     attrs: {
-      cols: "12",
-      sm: "6"
+      cols: "12"
     }
   }, [_c("v-card", [_c("v-card-text", [_c("v-row", [_c("v-col", {
     attrs: {
@@ -447,7 +446,11 @@ var render = function render() {
       cols: "12",
       sm: "6"
     }
-  }, [_c("v-card", [_c("v-card-title", [_c("h2", [_vm._v("Project 1")])]), _vm._v(" "), _c("v-card-text", [_c("p", [_vm._v("Project 1 description")])])], 1)], 1)], 1)], 1)], 1)], 1)], 1), _vm._v(" "), _c("v-row")], 1);
+  }, [_c("v-card", [_c("v-card-title", [_c("h2", [_vm._v("Project 1")])]), _vm._v(" "), _c("v-card-text", [_c("p", [_vm._v("Project 1 description")])])], 1)], 1)], 1), _vm._v(" "), _c("v-row", [_c("v-col", {
+    attrs: {
+      cols: "12"
+    }
+  }, [_c("v-card", [_c("v-card-title", [_c("h2", [_vm._v("Project 1")])]), _vm._v(" "), _c("v-card-text", [_c("p", [_vm._v("Project 1 description")])])], 1)], 1)], 1)], 1)], 1)], 1)], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

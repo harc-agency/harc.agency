@@ -3,7 +3,7 @@
     <h1>Project 1</h1>
 
     <v-row>
-      <v-col cols="12" sm="6">
+      <v-col cols="12">
         <v-card>
           <v-card-text>
             <v-row>
@@ -40,13 +40,21 @@
                 </v-card>
               </v-col>
             </v-row>
+            <v-row>
+              <v-col cols="12">
+                <v-card>
+                  <v-card-title>
+                    <h2>Project 1</h2>
+                  </v-card-title>
+                  <v-card-text>
+                    <p>Project 1 description</p>
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
           </v-card-text>
         </v-card>
       </v-col>
-    </v-row>
-
-    <v-row>
-      <!--  -->
     </v-row>
   </v-container>
 </template>
